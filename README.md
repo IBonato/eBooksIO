@@ -22,6 +22,17 @@ C:\data\db
 
 ## Usage
 
+* Create the file ```db.js``` in the folder ```config``` with the following code:
+
+```node
+if (process.env.NODE_ENV == "production") {
+    module.exports = { mongoURI: "URL_to_your_Mongo_Server" }
+}
+else {
+    module.exports = { mongoURI: "mongodb://user:password@localhost:27017/nameofthedatabase" } //Local URL to access via Browser
+}
+```
+
 * Start MongoDB, in the Terminal type the following command:
 
 ```bash
@@ -32,6 +43,8 @@ mongod
 ```bash
 nodemon app.js
 ```
+
+* Open ```localhost:8081``` in your Browser.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
