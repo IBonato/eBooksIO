@@ -1,0 +1,4 @@
+node_modules
+ebooks/*
+.vscode
+config/db.js

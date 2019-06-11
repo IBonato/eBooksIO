@@ -1,0 +1,167 @@
+<!-- Site Name -->
+<title>eBooks.IO - Cadastro de eBook</title>
+
+<!-- Subintro
+================================================== -->
+<section id="subintro">
+  <div class="container">
+    <div class="row">
+      <div class="span8">
+        <ul class="breadcrumb">
+          <li><a href="/"><i class="icon-home icon-rounded active"></i></a><i class="icon-angle-right"></i>
+          </li>
+          <li class="active"><a href="/addlivro">Cadastro de eBook</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Conteúdo
+================================================== -->
+<section id="maincontent">
+  <div class="container">
+    <div class="row">
+
+      <div class="span12">
+        <div class="text-center">
+          <h2>Cadastre o seu eBook</h2>
+          <p>
+            Ajude a todos que amam ler!
+          </p>
+        </div>
+
+        <form action="" method="post" role="form" enctype="multipart/form-data">
+          <div class="row">
+
+            <input type="hidden" name="id" value="{{ebook._id}}">
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="bookname">Nome do eBook:</label>
+              </div>
+              <input type="text" class="input-block-level" name="bookname"
+                placeholder="Insira o nome do eBook (ex. 'Eragon')" minlength="2" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="authorname">Autor:</label>
+              </div>
+              <input type="text" class="input-block-level" name="authorname"
+                placeholder="Insira o nome do autor (ex. 'Christopher Paolini')" minlength="4" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="genre">Gênero(s):</label>
+              </div>
+              <select class="input-block-level" name="genre[0]" required>
+                <option disabled selected>- Selecione -</option>
+                <option value="Ação">Ação</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Biografia">Biografia</option>
+                <option value="Fantasia">Fantasia</option>
+                <option value="Ficção científica">Ficção Científica</option>
+                <option value="Horror">Horror</option>
+              </select>
+              <select class="input-block-level" name="genre[1]">
+                <option disabled selected>- Selecione -</option>
+                <option value="Ação">Ação</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Biografia">Biografia</option>
+                <option value="Fantasia">Fantasia</option>
+                <option value="Ficção científica">Ficção Científica</option>
+                <option value="Horror">Horror</option>
+                <option value="Saga">Saga</option>
+              </select>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="publisher">Editora:</label>
+              </div>
+              <input type="text" class="input-block-level" name="publisher" id="publisher"
+                placeholder="Insira o nome da editora (ex. 'Rocco')" minlength="3" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="language">Idioma:</label>
+              </div>
+              <input type="text" class="input-block-level" name="language"
+                placeholder="Insira o idioma do eBook (ex. 'Português')" minlength="4" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="edition">Número da Edição:</label>
+              </div>
+              <input type="text" class="input-block-level" name="edition"
+                placeholder="Insira o número da edição (ex. '1')" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="text">ASIN | ISBN10/13:</label>
+              </div>
+              <input type="text" class="input-block-level" name="isbn"
+                placeholder="Insira o código de identificação do eBook (ex. '8532518486')"
+                pattern="(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])|([A-Z0-9]{10})"
+                required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="text">Capa do eBook:</label>
+              </div>
+              <input type="url" class="input-block-level" name="cover"
+                placeholder="Insira o endereço da imagem da capa do eBook na Amazon" required>
+            </div>
+
+            <div class="span12 form-group">
+              <div class="text-left">
+                <label for="text">Sinopse:</label>
+              </div>
+              <textarea class="input-block-level" name="synopsis" rows="10" required
+                placeholder="Insira a sinopse do eBook"></textarea>
+            </div>
+
+            <div class="span6 input-group">
+              <div class="text-left">
+                <label for="text">Arquivo:</label>
+                <p>Insira o arquivo nomeado com o código de identificação do livro (ex. '8532518486.mobi')</p>
+              </div>
+              <span class="input-group-btn">
+                <input type="file" class="input-block-level" name="ebookfile" required>
+              </span>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="extension">Formato:</label>
+              </div>
+              <select name="extension" class="input-block-level" required>
+                <option disabled selected>- Selecione -</option>
+                <option value=".mobi">MOBI</option>
+                <option value=".azw3">AZW3</option>
+                <option value=".epub">EPUB</option>
+              </select>
+            </div>
+
+            <div class="span12 text-center">
+              <button class="btn btn-large btn-danger" type="button" onclick="location.href='/'"><i
+                  class="icon-remove icon-white"></i>
+                Cancelar
+              </button>
+              <button class="btn btn-large btn-success" type="submit"><i class="icon-cloud-upload icon-white"></i>
+                Enviar
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<!-- Site Name -->
+<title>eBooks.IO - Todos os Livros</title>
+
+<!-- Subintro
+================================================== -->
+<section id="subintro">
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="icon-home icon-rounded active"></i></a><i class="icon-angle-right"></i>
+                    </li>
+                    <li class="active"><a href="/todos">Todos os Livros</a>
+                </ul>
+            </div>
+            <div class="span4">
+                <div class="search">
+                    <form action="/busca" method="GET" class="input-append">
+                        <input class="search-form" id="appendedPrependedInput" name="search" type="text"
+                            placeholder="Procure seu livro aqui..." required>
+                        <button class="btn btn-dark" type="submit"><i class="icon-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Conteúdo
+================================================== -->
+
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+            <div class="center">
+                {{#each ebooks}}
+                <div class="li span4" style="margin-bottom: 1rem!important;">
+                    <a href="/ebook/{{isbn}}" target="_blank"><img src="{{cover}}" alt="{{bookname}}"
+                            style="width:256px;height:400px;"></a>
+                    <h4><a href="/ebook/{{isbn}}" target="_blank">{{bookname}}</a></h4>
+                </div>
+                {{else}}
+                <h2>Nenhum ebook cadastrado!</h2>
+                {{/each}}
+            </div>
+        </div>
+</section>

@@ -1,0 +1,167 @@
+<!-- Site Name -->
+<title>eBooks.IO</title>
+
+<!-- Subintro
+================================================== -->
+<section id="subintro">
+  <div class="container">
+    <div class="row">
+      <div class="span4 offset8">
+        <div class="search">
+          <form action="/busca" method="GET" class="input-append">
+            <input class="search-form" id="appendedPrependedInput" name="search" type="text"
+              placeholder="Procure seu livro aqui..." required>
+            <button class="btn btn-dark" type="submit"><i class="icon-search"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Conteúdo
+================================================== -->
+<section id="intro">
+
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="text">
+          <h2><b>Os mais baixados</b></h2>
+        </div>
+        <!-- Place somewhere in the <body> of your page -->
+        <div id="mainslider" class="flexslider">
+          <ul class="slides">
+            {{#each mostdownloaded}}
+            <li data-thumb="{{cover}}">
+              <img src="{{cover}}" alt="{{bookname}}" style="width:256px;height:400px;" />
+              <div class="flex-caption primary">
+                <a href="/ebook/{{isbn}}">
+                  <h2>{{bookname}}</h2>
+                </a>
+                <p align="justify"> {{synopsis}}</p>
+              </div>
+            </li>
+            {{else}}
+            <li data-thumb="img/dummies/book.jpeg">
+              <img src="img/dummies/book.jpeg" alt="Book" style="width:256px;height:400px;" />
+              <div class="flex-caption primary">
+                <a href="/">
+                  <h2>Nenhum ebook cadastrado!</h2>
+                </a>
+                <p align="justify"> Ajude a todos que amam ler e compartilhe um eBook!</p>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section id="maincontent">
+  <div class="container">
+
+    <div class="row">
+      <div class="span12">
+        <div class="call-action">
+
+          <div class="text">
+            <h2>Contribua para o eBooks.IO</h2>
+            <p>
+              Ajude a todos que amam ler e compartilhe um eBook!
+            </p>
+          </div>
+          {{#if user}}
+          <div class="cta">
+            <a class="btn btn-large btn-theme" href="/addlivro">
+              <i class="icon-cloud-upload icon-white"></i> Enviar </a>
+          </div>
+          {{else}}
+          <div class="cta">
+            <a class="btn btn-large btn-theme" data-toggle="modal" data-target="#cadastromodal">
+              <i class="icon-cloud-upload icon-white"></i> Enviar </a>
+          </div>
+
+          <div class="modal fade" id="cadastromodal" tabindex="-1" role="dialog" aria-labelledby="cadastromodal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="cadastromodal">Por favor registre-se:</h5>
+                </div>
+                <div class="modal-body">
+                  <p>Para enviar um ebook você deve se registrar primeiro!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-inverse" data-dismiss="modal">
+                    Fechar
+                  </button>
+                  <button class="btn btn-theme" type="button" onclick="location.href='/cadastro'">
+                    Registre-se
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{/if}}
+
+        </div>
+        <!-- end tagline -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span12">
+        <h4 class="rheading">Últimas Publicações<span></span></h4>
+        <div class="row">
+          <div class="span12">
+            <div id="latest-work" class="carousel btleft">
+              <div class="carousel-wrapper">
+                <ul class="da-thumbs">
+
+                  {{#each lastadded}}
+                  <li>
+                    <img src="{{cover}}" alt="{{bookname}}" style="width:220px;height:360px;" />
+                    <article class="da-animate da-slideFromRight">
+                      <a class="zoom" data-pretty="prettyPhoto" href="{{cover}}">
+                        <i class="icon-zoom-in icon-rounded icon-48 active"></i>
+                      </a>
+                      <a onclick="location.href='/ebook/{{isbn}}'">
+                        <i class="icon-link icon-rounded icon-48 active"></i>
+                      </a>
+                      <div class="hidden-tablet">
+                        <p>{{bookname}} <br>{{authorname}} <br> {{edition}}ª Edição <br> {{downloads}} Downloads</p>
+                      </div>
+                    </article>
+                  </li>
+                  {{else}}
+                  <li>
+                    <img src="img/dummies/book.jpeg" alt="Book" style="width:220px;height:360px;" />
+                    <article class="da-animate da-slideFromRight">
+                      <a class="zoom" data-pretty="prettyPhoto" href="img/dummies/book.jpeg">
+                        <i class="icon-zoom-in icon-rounded icon-48 active"></i>
+                      </a>
+                      <a onclick="location.href='/'">
+                        <i class="icon-link icon-rounded icon-48 active"></i>
+                      </a>
+                      <div class="hidden-tablet">
+                        <p>Nenhum ebook cadastrado!</p>
+                      </div>
+                    </article>
+                  </li>
+                  {{/each}}
+
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

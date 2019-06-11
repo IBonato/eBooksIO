@@ -1,0 +1,126 @@
+<!-- Site Name -->
+<title>eBooks.IO - Editar dados de {{user.name}}</title>
+
+<!-- Subintro
+================================================== -->
+<section id="subintro">
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="icon-home icon-rounded active"></i></a><i class="icon-angle-right"></i>
+                    </li>
+                    <li>Usuário<i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="/user">{{user.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Conteúdo
+================================================== -->
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+
+            <div class="span12">
+
+                <h1>Editar Dados: </h1>
+
+                <form action="" method="post" role="form">
+                    <div class="row">
+
+                        <input type="hidden" name="id" value="{{user._id}}">
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="text">Nome:</label>
+                            </div>
+                            <input type="text" class="input-block-level" name="name" placeholder="Insira o seu nome"
+                                pattern="^[a-zA-Z]{2,20}$"
+                                title="O nome deve conter somente letras e ter no mínimo 3 caracteres."
+                                value="{{user.name}}" required>
+                        </div>
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="text">Sobrenome:</label>
+                            </div>
+                            <input type="text" class="input-block-level" name="surname"
+                                placeholder="Insira o seu sobrenome" pattern="^[a-zA-Z]{2,20}$"
+                                title="O sobrenome deve conter somente letras e ter no mínimo 3 caracteres."
+                                value="{{user.surname}}" required>
+                        </div>
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="email" class="control-label">Email:</label>
+                            </div>
+                            <input type="email" class="input-block-level" name="email" placeholder="Insira o seu email"
+                                value="{{user.email}}" required>
+                        </div>
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="date">Data de Nascimento:</label>
+                            </div>
+                            <input type="date" class="input-block-level" id="birthday" name="birthday"
+                                value="{{birthday}}" required>
+                        </div>
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="gender">Gênero:</label>
+                            </div>
+                            <select name="gender" class="input-block-level">
+                                <option value="{{user.gender}}">- {{user.gender}} -</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="oldpassword" class="control-label">Senha Atual:</label>
+                            </div>
+                            <input type="password" class="input-block-level" name="oldpassword"
+                                placeholder="Insira sua senha atual por segurança"
+                                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                        </div>
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="newpassword" class="control-label">Nova Senha:</label>
+                            </div>
+                            <input type="password" class="input-block-level" name="newpassword"
+                                placeholder="Insira sua nova senha"
+                                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                                title="A senha deve conter ao menos uma letra maiúscula, uma minúscula, um número ou caractere especial e ter 8 ou mais caracteres."
+                                required>
+                        </div>
+
+                        <div class="span6 form-group">
+                            <div class="text-left">
+                                <label for="cpassword" class="control-label">Confirmar senha:</label>
+                            </div>
+                            <input type="password" class="input-block-level" name="cpassword"
+                                placeholder="Insira sua senha novamente"
+                                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                        </div>
+
+                        <div class="span12 text-center">
+                            <button class="btn btn-large btn-danger" type="button" onclick="location.href='/user'"><i
+                                    class="icon-remove icon-white"></i>
+                                Cancelar
+                            </button>
+                            <button class="btn btn-large btn-success" type="submit"><i class="icon-ok icon-white"></i>
+                                Concluir
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+</section>

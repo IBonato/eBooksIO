@@ -1,0 +1,135 @@
+<!-- Site Name -->
+<title>eBooks.IO - Perfil de {{user.name}}</title>
+
+<!-- Subintro
+================================================== -->
+<section id="subintro">
+  <div class="container">
+    <div class="row">
+      <div class="span8">
+        <ul class="breadcrumb">
+          <li><a href="/"><i class="icon-home icon-rounded active"></i></a><i class="icon-angle-right"></i>
+          </li>
+          <li>Usuário<i class="icon-angle-right"></i>
+          </li>
+          <li><a href="/user">{{user.name}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Conteúdo
+================================================== -->
+<section id="maincontent">
+  <div class="container">
+    <div class="row">
+
+      {{#each errors}}
+      <div class="alert alert-danger">{{text}}</div>
+      {{else}}
+      {{/each}}
+
+      <div class="span12">
+        <h1>Dados do Usuário: </h1>
+      </div>
+
+      <div class="row">
+        <div class="span4 center">
+          <img src="{{user.photourl}}" alt="{{user.name}} {{user.surname}}" title="{{user.name}} {{user.surname}}"
+            class="img-circle" style="width:512px;">
+          <br>
+          <br>
+          <button class="btn btn-small btn-theme" type="button" data-toggle="modal" data-target="#editfotomodal"><i
+              class="icon-picture icon-white"></i>
+            Alterar Foto
+          </button>
+
+          <div class="modal fade" id="editfotomodal" tabindex="-1" role="dialog" aria-labelledby="editfotomodal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editfotomodal">Alterar Foto</h5>
+                </div>
+                <div class="modal-body">
+                  <form action="/user/edit/photo" method="POST">
+                    <input type="hidden" name="id" value="{{user._id}}">
+                    <p>Insira a URL da nova imagem:</p>
+                    <input type="url" class="input-block-level" name="photourl"
+                      placeholder="Insira a nova URL da imagem" required>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                      class="icon-remove icon-white"></i>
+                    Cancelar
+                  </button>
+                  <button class="btn btn-success" type="submit"><i class="icon-ok icon-white"></i>
+                    Alterar
+                  </button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="span8">
+
+          <h4><strong>Nome:</strong> {{user.name}}</h4>
+
+          <h4><strong>Sobrenome:</strong> {{user.surname}}</h4>
+
+          <h4><strong>Email:</strong> {{user.email}}</h4>
+
+          <h4><strong>Data de Nascimento:</strong>
+            <script> date = new Date('{{user.birthday}}')
+              document.write(date.toUTCString()); </script>
+          </h4>
+
+          <h4><strong>Gênero:</strong> {{user.gender}}</h4>
+
+          <button style="float: right;" class="btn btn-danger " type="button" data-toggle="modal"
+            data-target="#deletemodal"><i class="icon-trash icon-white"></i>
+            Deletar conta
+          </button>
+          <form action="" method="GET">
+            <button style="float: right;" class="btn btn-theme" type="button"
+              onclick="location.href='/user/edit/{{user._id}}'"><i class="icon-edit icon-white"></i>
+              Editar dados
+            </button>
+          </form>
+
+          <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="deletemodal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deletemodal">Deletar Conta</h5>
+                </div>
+                <div class="modal-body">
+                  <p>Você tem certeza que deseja deletar sua conta? Essa ação não pode ser desfeita. <br> Os ebooks
+                    enviados não serão deletados!</p>
+                </div>
+                <div class="modal-footer">
+                  <form action="/user/delete" method="POST">
+                    <button type="button" class="btn btn-inverse" data-dismiss="modal"><i
+                        class="icon-remove icon-white"></i>
+                      Não
+                    </button>
+                    <input type="hidden" name="id" value="{{user._id}}">
+                    <button class="btn btn-danger" type="submit"><i class="icon-ok icon-white"></i>
+                      Sim
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</section>

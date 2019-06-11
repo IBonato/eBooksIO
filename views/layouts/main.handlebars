@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- METADATA -->
+    <meta charset="utf-8">
+    <!-- Default HTML5 Character Set -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Adjust Viewport according to the device width -->
+    <meta name="description" content="Free E-book Sharing Site">
+    <!-- Site Description -->
+    <meta name="author" content="Igor Bonato Matricardi">
+    <!-- Author of the Site -->
+    <meta name="google-site-verification" content="_dyLsgneEWyQ-VTT6xdA6EHA2SAR6QrENmYk6BAiUG8" />
+    <!-- Google Site Verfication -->
+
+    <!-- Styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="/css/flexslider.css" rel="stylesheet">
+
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/color/default.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,600,400italic|Open+Sans:400,600,700"
+        rel="stylesheet">
+
+    <!-- Fav and Touch icons -->
+    <link rel="shortcut icon" href="/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/ico/ico.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/ico.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/ico/ico.ico">
+    <link rel="apple-touch-icon-precomposed" href="/ico/ico.ico">
+
+    <!-- =======================================================
+		Theme Name: Lumia
+		Theme URL: https://bootstrapmade.com/lumia-bootstrap-business-template/
+		Author URL: https://bootstrapmade.com
+	======================================================= -->
+</head>
+
+<body>
+    <div id="wrapper">
+        {{>_navbar}}
+        <div class="container">
+            {{#if error}}
+            <div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">×</button>{{error}}
+            </div>
+            {{else}}
+            {{/if}}
+            {{>_msg}}
+        </div>
+        {{{body}}}
+        {{>_footer}}
+    </div>
+
+</body>
+
+<a href="#" class="scrollup"><i class="icon-arrow-up icon-circled icon-48 active"></i></a>
+
+<script src="/js/jquery.js"></script>
+<script src="/js/raphael-min.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/google-code-prettify/prettify.js"></script>
+<script src="/js/jquery.elastislide.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/jquery.flexslider.js"></script>
+<script src="/js/jquery-hover-effect.js"></script>
+<script src="/js/animate.js"></script>
+
+<!-- Template Custom JavaScript File -->
+<script src="/js/custom.js"></script>
+
+</html>
