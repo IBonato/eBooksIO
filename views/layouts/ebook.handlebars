@@ -1,0 +1,93 @@
+<!-- Site Name -->
+<title>eBooks.IO - {{ebook.bookname}}</title>
+
+<!-- Subintro
+================================================== -->
+<section id="subintro">
+    <div class="container">
+        <div class="row">
+            <div class="span8">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="icon-home icon-rounded active"></i></a><i class="icon-angle-right"></i>
+                    </li>
+                    <li>{{ebook.genre}}<i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="/ebook/{{ebook.isbn}}">{{ebook.bookname}}</a></li>
+                </ul>
+            </div>
+            <div class="span4">
+                <div class="search">
+                    <form action="/busca" method="GET" class="input-append">
+                        <input class="search-form" id="appendedPrependedInput" name="search" type="text"
+                            placeholder="Procure seu livro aqui..." required>
+                        <button class="btn btn-dark" type="submit"><i class="icon-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Conteúdo
+================================================== -->
+<section id="maincontent">
+    <div class="container">
+        <div class="row">
+
+            {{#each errors}}
+            <div class="alert alert-danger">{{text}}</div>
+            {{else}}
+            {{/each}}
+
+            <div class="span12">
+                <h1>Dados do Ebook: </h1>
+            </div>
+
+            <div class="row">
+
+                <div class="span4 center">
+                    <img src="{{ebook.cover}}" alt="{{ebook.bookname}}" title="{{ebook.bookname}}">
+                </div>
+
+                <div class="span8">
+
+                    <h4><strong>Nome:</strong> {{ebook.bookname}}</h4>
+
+                    <h4><strong>Autor:</strong> {{ebook.authorname}}</h4>
+
+                    <h4><strong>Gênero:</strong> {{ebook.genre}}</h4>
+
+                    <h4><strong>Editora:</strong> {{ebook.publisher}}</h4>
+
+                    <h4><strong>Idioma:</strong> {{ebook.language}}</h4>
+
+                    <h4><strong>Edição:</strong> {{ebook.edition}}ª</h4>
+
+                    <h4><strong>ASIN | ISBN10/13:</strong> {{ebook.isbn}}</h4>
+
+                    <h4><strong>Downloads:</strong> {{ebook.downloads}}</h4>
+
+                    <h4><strong>Sinopse:</strong> </h4>
+                    <p align="justify">{{ebook.synopsis}}</p>
+
+                    <p align="justify"><strong>P.S.:</strong> Lembre-se que este site visa somente compartilhar
+                        e-books entre seus usuários para uso pessoal, a prática de pirataria é totalmente desencorajada
+                        e prejudica o mercado de livros. Se você realmente gostou da obra e deseja ajudar seu
+                        idealizador considere comprar o livro em um revendedor autorizado!</p>
+
+                    <div class="span8 center">
+                        <form action="/ebook/download/{{ebook.isbn}}{{ebook.extension}}" method="POST">
+                            <input type="hidden" name="isbn" value="{{ebook.isbn}}">
+                            <input type="hidden" name="downloads" value="{{ebook.downloads}}">
+                            <button class="btn btn-large btn-success" type="submit"><i
+                                    class="icon-cloud-download icon-white"></i>
+                                Download ({{ebook.extension}})
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+</section>

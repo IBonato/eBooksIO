@@ -1,0 +1,110 @@
+<!-- Navbar
+================================================== -->
+<header>
+    {{#if user}}
+    <div class="navbar navbar-static-top">
+        <div class="navbar-inner">
+            <div class="container">
+
+                <!-- logo -->
+                <div class="logo">
+                    <a href="/">
+                        <img src="/img/logo1.png" alt="Site Logo" />
+                    </a>
+                </div>
+                <!-- end logo -->
+
+                <!-- top menu -->
+                <div class="navigation">
+                    <nav>
+                        <ul class="nav topnav">
+                            <li>
+                                <a href="/"><i class="icon-home"></i> Principal </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#"><i class="icon-tags"></i> Categorias <i class="icon-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/categoria/fantasia">Fantasia</a></li>
+                                    <li><a href="/categoria/ficcao">Ficção Científica</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/todos"><i class="icon-book"></i> Todos os Livros </a>
+                            </li>
+                            <li>
+                                <a href="/sobre"><i class="icon-info-sign"></i> Sobre Nós </a>
+                            </li>
+
+                            <!-- user data -->
+
+                            <div class="login-container-auth">
+                                <span class="navbar-text" style="float: right">
+                                    Seja bem-vindo(a), <strong>{{user.name}}</strong>
+                                    <button class="btn btn-theme" type="button" onclick="location.href='/user'"><i
+                                            class="icon-pencil"></i>Perfil</button>
+                                    <button class="btn btn-theme" type="submit" onclick="location.href='/logout'"><i
+                                            class="icon-signout"></i>Sair</button>
+                                </span>
+                            </div>
+
+                            <!-- end menu -->
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="/">
+                            <img src="/img/logo1.png" alt="Site Logo" />
+                        </a>
+                    </div>
+                    <!-- end logo -->
+
+                    <!-- top menu -->
+                    <div class="navigation">
+                        <nav>
+                            <ul class="nav topnav">
+                                <li>
+                                    <a href="/"><i class="icon-home"></i> Principal </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#"><i class="icon-tags"></i> Categorias <i class="icon-angle-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/categoria/fantasia">Fantasia</a></li>
+                                        <li><a href="/categoria/ficcao">Ficção Científica</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="/todos"><i class="icon-book"></i> Todos os Livros
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/sobre"><i class="icon-info-sign"></i> Sobre
+                                        Nós </a>
+                                </li>
+                                <li class="dropdown active">
+                                    <a href="/cadastro"><i class="icon-user"></i>
+                                        Registre-se </a>
+                                </li>
+                                <div class="login-container">
+                                    <form action="/" method="POST">
+                                        <input type="email" placeholder="Email" name="email">
+                                        <input type="password" placeholder="Senha" name="password"
+                                            autocomplete="current-password">
+                                        <button class="btn btn-theme" type="submit"><i
+                                                class="icon-signin"></i>Login</button>
+                                    </form>
+                                </div>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- end menu -->
+                </div>
+            </div>
+        </div>
+        {{/if}}
+</header>

@@ -1,0 +1,121 @@
+<!-- Site Name -->
+<title>eBooks.IO - Cadastro</title>
+
+<!-- Subintro
+================================================== -->
+<section id="subintro">
+  <div class="container">
+    <div class="row">
+      <div class="span8">
+        <ul class="breadcrumb">
+          <li><a href="/"><i class="icon-home icon-rounded active"></i></a><i class="icon-angle-right"></i>
+          </li>
+          <li class="active"><a href="/cadastro">Registre-se</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Conteúdo
+================================================== -->
+<section id="maincontent">
+  <div class="container">
+    <div class="row">
+
+      <div class="span12">
+        <div class="text-center">
+          <h2>Registre-se</h2>
+          <p>
+            Crie uma conta para que você possa compartilhar seus livros favoritos com outras pessoas!
+          </p>
+        </div>
+
+        <form action="" method="post" role="form">
+          <div class="row">
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="name">Nome:</label>
+              </div>
+              <input type="text" class="input-block-level" name="name" placeholder="Insira o seu nome"
+                pattern="^[a-zA-Z ]{2,20}$" title="O nome deve conter somente letras e ter no mínimo 3 caracteres."
+                required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="surname">Sobrenome:</label>
+              </div>
+              <input type="text" class="input-block-level" name="surname" placeholder="Insira o seu sobrenome"
+                pattern="^[a-zA-Z ]{2,20}$" title="O sobrenome deve conter somente letras e ter no mínimo 3 caracteres."
+                required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="email" class="control-label">Email:</label>
+              </div>
+              <input type="email" class="input-block-level" name="email" placeholder="Insira o seu email" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="birthday">Data de Nascimento:</label>
+              </div>
+              <input type="date" class="input-block-level" name="birthday" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="gender">Gênero:</label>
+              </div>
+              <select name="gender" class="input-block-level">
+                <option disabled selected>- Selecione -</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Prefiro não dizer">Outro</option>
+              </select>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="photourl" class="control-label">Foto de Perfil:</label>
+              </div>
+              <input type="url" class="input-block-level" name="photourl" placeholder="Insira a URL da imagem" required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="password" class="control-label">Senha:</label>
+              </div>
+              <input type="password" class="input-block-level" name="password" placeholder="Insira sua senha"
+                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                title="A senha deve conter ao menos uma letra maiúscula, uma minúscula, um número ou caractere especial e ter 8 ou mais caracteres."
+                required>
+            </div>
+
+            <div class="span6 form-group">
+              <div class="text-left">
+                <label for="cpassword" class="control-label">Confirmar senha:</label>
+              </div>
+              <input type="password" class="input-block-level" name="cpassword" placeholder="Insira sua senha novamente"
+                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+            </div>
+
+            <div class="span12 text-center">
+              <button class="btn btn-large btn-danger" type="button" onclick="location.href='/'"><i
+                  class="icon-remove icon-white"></i>
+                Cancelar
+              </button>
+              <button class="btn btn-large btn-success" type="submit"><i class="icon-ok icon-white"></i>
+                Concluir
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
