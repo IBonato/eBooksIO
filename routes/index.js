@@ -270,11 +270,6 @@ router.post("/user/edit/:id", (req, res) => {
                 user.gender = req.body.gender
             }
 
-            if (req.body.gender == user.gender) { }
-            else {
-                user.gender = req.body.gender
-            }
-
             bcrypt.compare(req.body.oldpassword, user.password, (error, isequal) => {
                 if (isequal) {
                     bcrypt.genSalt(10, (erro, salt) => {
