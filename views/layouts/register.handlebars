@@ -39,8 +39,8 @@
                 <label for="name">Nome:</label>
               </div>
               <input type="text" class="input-block-level" name="name" placeholder="Insira o seu nome"
-                pattern="^[a-zA-Z ]{2,20}$" title="O nome deve conter somente letras e ter no mínimo 3 caracteres."
-                required>
+                pattern="[A-Za-zÀ-ÖØ-öø-ÿ ]{3,30}"
+                title="O nome deve conter somente letras e ter no mínimo 3 caracteres." required>
             </div>
 
             <div class="span6 form-group">
@@ -48,8 +48,8 @@
                 <label for="surname">Sobrenome:</label>
               </div>
               <input type="text" class="input-block-level" name="surname" placeholder="Insira o seu sobrenome"
-                pattern="^[a-zA-Z ]{2,20}$" title="O sobrenome deve conter somente letras e ter no mínimo 3 caracteres."
-                required>
+                pattern="[A-Za-zÀ-ÖØ-öø-ÿ ]{3,50}"
+                title="O sobrenome deve conter somente letras e ter no mínimo 3 caracteres." required>
             </div>
 
             <div class="span6 form-group">
@@ -89,7 +89,8 @@
               <div class="text-left">
                 <label for="password" class="control-label">Senha:</label>
               </div>
-              <input type="password" class="input-block-level" name="password" placeholder="Insira sua senha"
+              <input type="password" class="input-block-level" name="password" id="password" onkeyup="check_pwd();"
+                placeholder="Insira sua senha"
                 pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
                 title="A senha deve conter ao menos uma letra maiúscula, uma minúscula, um número ou caractere especial e ter 8 ou mais caracteres."
                 required>
@@ -99,9 +100,27 @@
               <div class="text-left">
                 <label for="cpassword" class="control-label">Confirmar senha:</label>
               </div>
-              <input type="password" class="input-block-level" name="cpassword" placeholder="Insira sua senha novamente"
+              <input type="password" class="input-block-level" name="cpassword" id="cpassword" onkeyup="check_pwd();"
+                placeholder="Insira sua senha novamente"
                 pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+              <span id='message'></span>
             </div>
+
+            <script>
+              var check_pwd = function () {
+                if (document.getElementById('password').value == '' && document.getElementById('cpassword').value == '') {
+                  document.getElementById('message').innerHTML = '';
+                }
+                else if (document.getElementById('password').value ==
+                  document.getElementById('cpassword').value) {
+                  document.getElementById('message').style.color = 'green';
+                  document.getElementById('message').innerHTML = 'As senhas digitas coincidem.';
+                } else {
+                  document.getElementById('message').style.color = 'red';
+                  document.getElementById('message').innerHTML = 'As senhas digitas não coincidem.';
+                }
+              }
+            </script>
 
             <div class="span12 text-center">
               <button class="btn btn-large btn-danger" type="button" onclick="location.href='/'"><i

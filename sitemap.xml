@@ -33,7 +33,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://ebooksio.herokuapp.com/ebook/8532518486</loc>
+    <loc>https://ebooksio.herokuapp.com/ebook/B06Y5X1CBD</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://ebooksio.herokuapp.com/ebook/B07FQW9GJP</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -45,6 +49,10 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://ebooksio.herokuapp.com/ebook/8532518486</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://ebooksio.herokuapp.com/ebook/B07HKPLNHC</loc>
     <changefreq>weekly</changefreq>
   </url>
@@ -53,11 +61,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://ebooksio.herokuapp.com/ebook/8580448786</loc>
+    <loc>https://ebooksio.herokuapp.com/ebook/8579801249</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://ebooksio.herokuapp.com/ebook/8579801249</loc>
+    <loc>https://ebooksio.herokuapp.com/ebook/8580448786</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -74,14 +82,6 @@
   </url>
   <url>
     <loc>https://ebooksio.herokuapp.com/ebook/B01MR607V9</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://ebooksio.herokuapp.com/ebook/B06Y5X1CBD</loc>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://ebooksio.herokuapp.com/ebook/B07FQW9GJP</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
