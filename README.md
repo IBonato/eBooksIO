@@ -29,7 +29,7 @@ if (process.env.NODE_ENV == "production") {
     module.exports = { mongoURI: "URL_to_your_Mongo_Server" }
 }
 else {
-    module.exports = { mongoURI: "mongodb://user:password@localhost:27017/nameofthedatabase" } //Local URL to access via Browser
+    module.exports = { mongoURI: "mongodb://user:pwd@localhost:27017/nameofthedatabase" } //Local URL to access via Browser
 }
 ```
 
@@ -37,6 +37,21 @@ else {
 
 ```bash
 mongod
+```
+
+* Create new database and admin:
+
+```bash
+mongo
+
+use nameofthedatabase
+db.createUser(
+  {
+    user: "myDatabaseAdmin",
+    pwd: "abc123",
+    roles: [ { role: "dbOwner", db: "nameofthedatabase" } ]
+  }
+)
 ```
 
 * Start the application (```nodemon``` will automatically restart your application every time you make a change in any ```.js``` file and save it):
