@@ -54,7 +54,7 @@ db.createUser(
 )
 ```
 
-* Start the application (```nodemon``` will automatically restart your application every time you make a change in any ```.js``` file and save it):
+* Start the application (```nodemon``` will automatically restart your application every time you make a change in any ```.js``` file and save it, if you don't have the package, you can install it globally with ```npm install -g nodemon```):
 ```bash
 nodemon app.js
 ```
