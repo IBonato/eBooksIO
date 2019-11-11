@@ -1718,7 +1718,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 
-.modal {
+/*.modal {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 5px;
@@ -1746,10 +1746,10 @@ input[type="submit"].btn.btn-mini {
 }
 
 .modal-dialog {
-  /*display: inline-block;*/
+  display: inline-block;
   text-align: left;
   vertical-align: middle;
-}
+}*/
 
 .tooltip-inner {
   -webkit-border-radius: 0;
