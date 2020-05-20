@@ -15,10 +15,11 @@ const User = new Schema({
     email: {
         type: String,
         maxLength: 50,
+        unique: true,
         required: true
     },
     birthday: {
-        type: Date,
+        type: String,
         required: true
     },
     gender: {
