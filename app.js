@@ -1,6 +1,8 @@
 // Loading necessary Modules
-const express = require('express')
-const handlebars = require('express-handlebars')
+const express = require('express');
+const Handlebars = require('handlebars')
+const expressHandlebars = require('express-handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 const frameguard = require('frameguard')
 const bodyparser = require('body-parser')
 const mongoose = require('mongoose')
@@ -48,16 +50,8 @@ app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 
 // Handlebars (Handle Pages)
-app.engine('handlebars', handlebars({
-    defaultLayout: 'main', helpers: {
-        ifThird: (index, options) => {
-            if (index % 3 == 0) {
-                return options.fn(this);
-            } else {
-                return options.inverse(this);
-            }
-        }
-    }
+app.engine('handlebars', expressHandlebars({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
 }))
 app.set('view engine', 'handlebars')
 

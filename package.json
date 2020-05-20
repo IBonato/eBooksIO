@@ -4,6 +4,7 @@
   "description": "Ebook web repository made with Node, Express, Passport and Mongoose.",
   "main": "app.js",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
     "async": "^3.2.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",

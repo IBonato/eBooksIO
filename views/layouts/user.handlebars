@@ -77,20 +77,27 @@
 
         <div class="span8">
 
-          <h4><strong>Nome:</strong> {{user.name}}</h4>
-
-          <h4><strong>Sobrenome:</strong> {{user.surname}}</h4>
+          <h4><strong>Nome:</strong> {{user.name}} {{user.surname}}</h4>
 
           <h4><strong>Email:</strong> {{user.email}}</h4>
 
-          <h4><strong>Data de Nascimento: <span id="datetime"></span></strong>
+          <h4><strong>Data de Nascimento: </strong>
             <script>
-              date = new Date('{{user.birthday}}')
-              document.getElementById("datetime").innerHTML = (("0" + date.getDate()).slice(-2)) + "/" + (("0" + (date.getMonth() + 1)).slice(-2)) + "/" + (date.getFullYear()) + " - " + (("0" + date.getHours()).slice(-2)) + ":" + (("0" + date.getMinutes()).slice(-2));
+              var date = '{{user.birthday}}';
+              function FormataStringData(date) {
+                var dia = date.split("-")[2];
+                var mes = date.split("-")[1];
+                var ano = date.split("-")[0];
+
+                return ("0" + dia).slice(-2) + '/' + ("0" + mes).slice(-2) + '/' + ano;
+              }
+              document.write(FormataStringData(date))
             </script>
           </h4>
 
           <h4><strong>Gênero:</strong> {{user.gender}}</h4>
+
+          <br> <br> <br> <br> <br> <br> <br>
 
           <button style="float: right;" class="btn btn-danger " type="button" data-toggle="modal"
             data-target="#deletemodal"><i class="icon-trash icon-white"></i>
