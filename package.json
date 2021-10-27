@@ -1,13 +1,11 @@
 {
   "name": "ihc_project",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Ebook web repository made with Node, Express, Passport and Mongoose.",
   "main": "app.js",
   "dependencies": {
-    "@handlebars/allow-prototype-access": "^1.0.3",
     "async": "^3.2.0",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "dateformat": "^3.0.3",
@@ -15,15 +13,13 @@
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.1",
     "frameguard": "^3.1.0",
-    "moment": "^2.26.0",
-    "mongoose": "^5.9.15",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.1",
     "multer": "^1.4.2",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "sitemap-generator": "^8.4.1"
+    "passport-local": "^1.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"

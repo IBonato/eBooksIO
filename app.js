@@ -1,13 +1,9 @@
 // Loading necessary Modules
-const express = require('express');
-const Handlebars = require('handlebars')
-const expressHandlebars = require('express-handlebars');
-const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
+const express = require('express')
+const expressHandlebars = require('express-handlebars')
 const frameguard = require('frameguard')
-const bodyparser = require('body-parser')
 const mongoose = require('mongoose')
 const compression = require('compression')
-const fs = require('fs')
 const app = express()
 const index = require("./routes/index")
 const path = require('path')
@@ -15,11 +11,10 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require("passport")
 const db = require("./config/db")
-const SitemapGenerator = require('sitemap-generator')
 require("./config/auth")(passport)
 
 // Configs
-// Session
+// Session secret must be in a secure file <---
 app.use(session({
     secret: "42e07daa22349b03d066e097b020de46",
     resave: true,
@@ -34,7 +29,10 @@ app.use(passport.session())
 app.use(flash())
 
 // Middlewares
+//1 - Avoid embedding
 app.use(frameguard({ action: 'sameorigin' }))
+
+//2 - Defining Message Types
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash("success_msg")
     res.locals.info_msg = req.flash("info_msg")
@@ -43,16 +41,15 @@ app.use((req, res, next) => {
     res.locals.user = req.user || null;
     next()
 })
+
+//3 - Compress page text for optimization
 app.use(compression())
 
-// Body Parser
-app.use(bodyparser.urlencoded({ extended: true }))
-app.use(bodyparser.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-// Handlebars (Handle Pages)
-app.engine('handlebars', expressHandlebars({
-    handlebars: allowInsecurePrototypeAccess(Handlebars)
-}))
+//4 - Handlebars (Handle Pages)
+app.engine('handlebars', expressHandlebars())
 app.set('view engine', 'handlebars')
 
 // Mongoose (Database Communication)
@@ -60,6 +57,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect(db.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
 }).then(() => {
     console.log("Connected to MongoDB")
 }).catch((err) => {
@@ -69,29 +68,9 @@ mongoose.connect(db.mongoURI, {
 // Static Content
 app.use(express.static(path.join(__dirname, "static")))
 
-// Sitemap generator
-const generator = SitemapGenerator('https://ebooksio.herokuapp.com/', {
-    stripQuerystring: false,
-    changeFreq: 'weekly'
-})
-
-// Register event listeners
-generator.on('done', () => {
-    // sitemaps created
-})
-// Start the crawler
-generator.start()
-var sitemap;
-
 // Routes
 // Main --> Secondary routes declared on index.js
 app.use('/', index)
-
-// Sitemap Route
-app.get('/sitemap.xml', (req, res) => {
-    sitemap = fs.readFileSync(path.join(__dirname, "sitemap.xml"));
-    res.end(sitemap);
-});
 
 // Others
 const PORT = process.env.PORT || 8081 // Random port

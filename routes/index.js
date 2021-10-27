@@ -40,7 +40,7 @@ router.get("/", (req, res) => {
                 }
                 lastadded = ebooks;
                 callback(null, ebooks);
-            }).sort({ added: 'desc' }).limit(8)
+            }).lean().sort({ added: 'desc' }).limit(8)
         },
         (callback) => {
             Ebook.find({}, (err, ebooks) => {
@@ -50,7 +50,7 @@ router.get("/", (req, res) => {
                 }
                 mostdownloaded = ebooks;
                 callback(null, ebooks);
-            }).sort({ downloads: 'desc' }).limit(4)
+            }).lean().sort({ downloads: 'desc' }).limit(4)
         }],
         (err) => {
             res.render("layouts/index", { lastadded: lastadded, mostdownloaded: mostdownloaded })
@@ -59,7 +59,7 @@ router.get("/", (req, res) => {
 
 // Route: all ebooks
 router.get("/todos", (req, res) => {
-    Ebook.find().sort({ bookname: '1' }).then((ebooks) => {
+    Ebook.find().lean().sort({ bookname: '1' }).then((ebooks) => {
         res.render("layouts/all", { ebooks: ebooks })
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao listar os ebooks!")
@@ -69,7 +69,7 @@ router.get("/todos", (req, res) => {
 
 // Route: fiction ebooks
 router.get("/categoria/ficcao", (req, res) => {
-    Ebook.find({ genre: 'Ficção científica' }).sort({ bookname: '1' }).then((ebooks) => {
+    Ebook.find({ genre: 'Ficção científica' }).lean().sort({ bookname: '1' }).then((ebooks) => {
         res.render("layouts/ficcao", { ebooks: ebooks })
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao listar os ebooks!")
@@ -79,7 +79,7 @@ router.get("/categoria/ficcao", (req, res) => {
 
 // Route: fantasy ebooks
 router.get("/categoria/fantasia", (req, res) => {
-    Ebook.find({ genre: 'Fantasia' }).sort({ bookname: '1' }).then((ebooks) => {
+    Ebook.find({ genre: 'Fantasia' }).lean().sort({ bookname: '1' }).then((ebooks) => {
         res.render("layouts/fantasia", { ebooks: ebooks })
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao listar os ebooks!")
@@ -185,7 +185,7 @@ router.post("/cadastro", (req, res) => {
 
 // Route: user page
 router.get("/user", loggedin, (req, res) => {
-    User.find().then((users) => {
+    User.find().lean().then((users) => {
         res.render("layouts/user", { users: users })
     }).catch((err) => {
         console.log(err)
@@ -196,7 +196,7 @@ router.get("/user", loggedin, (req, res) => {
 
 // Route: user get edit page
 router.get("/user/edit/:id", (req, res) => {
-    User.findOne({ _id: req.params.id }).then((user) => {
+    User.findOne({ _id: req.params.id }).lean().then((user) => {
         let birthday = moment(user.birthday).utc().format("YYYY-MM-DD")
         res.render("layouts/user_edit", { user: user, birthday: birthday })
     }).catch((err) => {
@@ -363,7 +363,7 @@ router.post('/addlivro', upload.single('ebookfile'), (req, res) => {
 
 // Route: ebook page
 router.get('/ebook/:isbn', (req, res) => {
-    Ebook.findOne({ isbn: req.params.isbn }).then((ebook) => {
+    Ebook.findOne({ isbn: req.params.isbn }).lean().then((ebook) => {
         res.render("layouts/ebook", { ebook: ebook })
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao listar os dados do ebook!")
@@ -399,7 +399,7 @@ function escapeRegex(text) {
 router.get('/busca', (req, res) => {
     if (req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        Ebook.find({ bookname: regex }).sort({ bookname: '1' }).then((ebooks) => {
+        Ebook.find({ bookname: regex }).lean().sort({ bookname: '1' }).then((ebooks) => {
             if (ebooks.length < 1) {
                 req.flash("info_msg", "Nenhum ebook corresponde ao termo pesquisado, tente novamente.")
             }

@@ -15,7 +15,7 @@ module.exports = function (passport) {
                 return done(null, false, { message: "Esta conta não existe!" })
             }
 
-            bcrypt.compare(password, user.password, (error, isequal) => {
+            bcrypt.compare(password, user.password, (err, isequal) => {
                 if (isequal) {
                     return done(null, user)
                 }
@@ -32,6 +32,6 @@ module.exports = function (passport) {
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
             done(err, user)
-        })
+        }).lean()
     })
 }
