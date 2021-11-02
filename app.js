@@ -14,7 +14,7 @@ const db = require("./config/db")
 require("./config/auth")(passport)
 
 // Configs
-// Session secret must be in a secure file <---
+// Session secret must be stored in a secure file <---
 app.use(session({
     secret: "42e07daa22349b03d066e097b020de46",
     resave: true,

@@ -195,7 +195,7 @@ router.get("/user", loggedin, (req, res) => {
 });
 
 // Route: user get edit page
-router.get("/user/edit/:id", (req, res) => {
+router.get("/user/edit/:id", loggedin, (req, res) => {
     User.findOne({ _id: req.params.id }).lean().then((user) => {
         let birthday = moment(user.birthday).utc().format("YYYY-MM-DD")
         res.render("layouts/user_edit", { user: user, birthday: birthday })
@@ -206,7 +206,7 @@ router.get("/user/edit/:id", (req, res) => {
 });
 
 // Route: user post edit photo
-router.post("/user/edit/photo", (req, res) => {
+router.post("/user/edit/photo", loggedin, (req, res) => {
     var errors = []
 
     if (errors.length > 0)
@@ -232,7 +232,7 @@ router.post("/user/edit/photo", (req, res) => {
 });
 
 // Route: user post edit page
-router.post("/user/edit/:id", (req, res) => {
+router.post("/user/edit/:id", loggedin, (req, res) => {
     var errors = []
 
     if (req.body.newpassword != req.body.cpassword) {
@@ -306,7 +306,7 @@ router.post("/user/edit/:id", (req, res) => {
 });
 
 // Route: user delete account
-router.post("/user/delete", (req, res) => {
+router.post("/user/delete", loggedin, (req, res) => {
     User.findOneAndRemove({ _id: req.body.id }).then(() => {
         req.flash("success_msg", "Usuário deletado com sucesso!")
         res.redirect("/")
@@ -319,7 +319,7 @@ router.post("/user/delete", (req, res) => {
 //----------------------------------------------EBOOK MANAGEMENT ROUTES-------------------------------------------------
 
 // Route: receive data from ebook register
-router.post('/addlivro', upload.single('ebookfile'), (req, res) => {
+router.post('/addlivro', loggedin, upload.single('ebookfile'), (req, res) => {
 
     var errors = []
 
