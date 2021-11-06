@@ -34,7 +34,7 @@
           <ul class="slides">
             {{#each mostdownloaded}}
             <li data-thumb="{{cover}}">
-              <img src="{{cover}}" alt="{{bookname}}" style="width:256px;height:400px;" />
+              <img data-src="{{cover}}" alt="{{bookname}}" style="width:256px;height:400px;" class="lazyload" />
               <div class="flex-caption primary">
                 <a href="/ebook/{{isbn}}">
                   <h2>{{bookname}}</h2>
@@ -44,7 +44,7 @@
             </li>
             {{else}}
             <li data-thumb="img/dummies/book.jpeg">
-              <img src="img/dummies/book.jpeg" alt="Book" style="width:256px;height:400px;" />
+              <img data-src="img/dummies/book.jpeg" alt="Book" style="width:256px;height:400px;" class="lazyload" />
               <div class="flex-caption primary">
                 <a href="/">
                   <h2>Nenhum ebook cadastrado!</h2>
@@ -124,7 +124,7 @@
 
                   {{#each lastadded}}
                   <li>
-                    <img src="{{cover}}" alt="{{bookname}}" style="width:220px;height:360px;" />
+                    <img data-src="{{cover}}" alt="{{bookname}}" style="width:220px;height:360px;" class="lazyload" />
                     <article class="da-animate da-slideFromRight">
                       <a class="zoom" data-pretty="prettyPhoto" href="{{cover}}">
                         <i class="icon-zoom-in icon-rounded icon-48 active"></i>
@@ -139,7 +139,8 @@
                   </li>
                   {{else}}
                   <li>
-                    <img src="img/dummies/book.jpeg" alt="Book" style="width:220px;height:360px;" />
+                    <img data-src="img/dummies/book.jpeg" alt="Book" style="width:220px;height:360px;"
+                      class="lazyload" />
                     <article class="da-animate da-slideFromRight">
                       <a class="zoom" data-pretty="prettyPhoto" href="img/dummies/book.jpeg">
                         <i class="icon-zoom-in icon-rounded icon-48 active"></i>

@@ -36,8 +36,8 @@
             <div class="center">
                 {{#each ebooks}}
                 <div class="li span4" style="margin-bottom: 1rem!important;">
-                    <a href="/ebook/{{isbn}}" target="_blank"><img src="{{cover}}" alt="{{bookname}}"
-                            style="width:256px;height:400px;"></a>
+                    <a href="/ebook/{{isbn}}" target="_blank"><img data-src="{{cover}}" alt="{{bookname}}"
+                            style="width:256px;height:400px;" class="lazyload"></a>
                     <h4><a href="/ebook/{{isbn}}" target="_blank">{{bookname}}</a></h4>
                 </div>
                 {{else}}
