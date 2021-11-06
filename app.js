@@ -65,8 +65,16 @@ mongoose.connect(db.mongoURI, {
     console.log("Error connecting to MongoDB: " + err)
 })
 
-// Static Content
-app.use(express.static(path.join(__dirname, "static")))
+// Static Content with 7 days cache
+app.use(express.static(path.join(__dirname, "static"), {
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, path) => {
+        if (path.endsWith('.handlebars')) {
+            res.setHeader('Cache-Control', 'max-age=604800');
+        }
+    },
+}));
 
 // Routes
 // Main --> Secondary routes declared on index.js
