@@ -2,6 +2,10 @@
   "name": "ihc_project",
   "version": "1.1.0",
   "description": "Ebook web repository made with Node, Express, Passport and Mongoose.",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "main": "app.js",
   "dependencies": {
     "async": "^3.2.0",
