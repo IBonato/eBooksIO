@@ -14,11 +14,16 @@ const db = require("./config/db")
 require("./config/auth")(passport)
 
 // Configs
+// Session Creation -> Cookie lifetime: 6 hours
 // Session secret must be stored in a secure file <---
 app.use(session({
     secret: "42e07daa22349b03d066e097b020de46",
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: true,
+        maxAge: 60 * 60 * 6
+    }
 }))
 
 // Passport (Auth)
@@ -65,13 +70,13 @@ mongoose.connect(db.mongoURI, {
     console.log("Error connecting to MongoDB: " + err)
 })
 
-// Static Content with 7 days cache
+// Static Content with 365 days cache
 app.use(express.static(path.join(__dirname, "static"), {
     etag: true,
     lastModified: true,
     setHeaders: (res, path) => {
-        if (path.endsWith('.handlebars')) {
-            res.setHeader('Cache-Control', 'max-age=604800');
+        if (path.endsWith('.handlebars') || path.endsWith('.js') || path.endsWith('.css') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.ico')) {
+            res.setHeader('Cache-Control', 'max-age=31536000');
         }
     },
 }));

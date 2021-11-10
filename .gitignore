@@ -1,2 +1,7 @@
-node_modules
-.vscode
+# Ignore these folders
+node_modules/*
+config/*
+.vscode/*
+
+# Except this file
+!config/auth.js
