@@ -15,7 +15,7 @@
     "cookie-session": "^1.4.0",
     "dateformat": "^3.0.3",
     "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
+    "express-handlebars": "^5.3.1",
     "frameguard": "^3.1.0",
     "moment": "^2.29.4",
     "mongoose": "^5.10.1",
